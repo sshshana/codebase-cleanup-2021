@@ -2,6 +2,9 @@ import os
 from datetime import datetime
 from pandas import read_csv
 
+def to_usd(my_price):
+    return f"${my_price:,.2f}"
+
 # READ INVENTORY OF PRODUCTS
 
 products_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
@@ -32,15 +35,28 @@ print("---------")
 print("CHECKOUT AT: " + str(checkout_at.strftime("%Y-%M-%d %H:%m:%S")))
 print("---------")
 for p in selected_products:
-    print("SELECTED PRODUCT: " + p["name"] + "   " + '${:.2f}'.format(p["price"]))
+    print("SELECTED PRODUCT: " + p["name"] + "   " + to_usd(p["price"]))
 
 print("---------")
-print(f"SUBTOTAL: {subtotal:,.2f}")
-print(f"TAX: {(subtotal * 0.0875):.2f}")
-print(f"TOTAL: {((subtotal * 0.0875) + subtotal):.2f}")
+print(f"SUBTOTAL: {to_usd(subtotal)}")
+print(f"TAX: {to_usd(subtotal * 0.0875)}")
+print(f"TOTAL: {to_usd((subtotal * 0.0875) + subtotal)}")
 print("---------")
 print("THANK YOU! PLEASE COME AGAIN SOON!")
 print("---------")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # WRITE RECEIPT TO FILE
 
