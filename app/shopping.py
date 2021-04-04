@@ -6,7 +6,7 @@ def to_usd(my_price):
     """
     Formats a number as USD with dollar sign and two decimals (and also thousands separator)
 
-    Params my_price is a number (int or float) that we want to format
+    Parameter my_price is a number (int or float) that we want to format
 
     Examples: format_usd(10) / Result: $10.00
     """
@@ -42,6 +42,8 @@ total = subtotal + tax
 
 
 # PRINT RECEIPT
+
+### SHOULD BE UPDATED!!!!! STILL HAS DUPLICATES
 
 print("---------")
 print("CHECKOUT AT: " + str(checkout_at.strftime("%Y-%M-%d %H:%m:%S")))
