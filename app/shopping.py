@@ -12,8 +12,18 @@ def format_usd(my_price):
     """
     return f"${my_price:,.2f}"
 
-# PREVENT ALL THE APP CODE FROM BEING IMPORTED
-# BUT STILL BE ALBE TO RUN IT FROM THE COMMAND LINE IS LIKE THIS...
+def lookup_product(product_id, all_products):
+    """
+    Params:
+        product_id (str) like "8"
+        all_products (list of dict) each dict should have "id", "name", "department", "aisle", and "price" attributes
+    """
+    matching_products = [p for p in all_products if str(p["id"]) == str(product_id)]
+    if any(matching_products):
+        return matching_products[0]
+    else:
+        return None
+
 
 if __name__ == "__main__":
 
@@ -31,9 +41,9 @@ if __name__ == "__main__":
         if selected_id.upper() == "DONE":
             break
         else:
-            matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-            if any(matching_products):
-                selected_products.append(matching_products[0])
+            matching_product = lookup_product(selected_id, products)
+            if matching_product:
+                selected_products.append(matching_product)
             else:
                 print("OOPS, Couldn't find that product. Please try again.")
 
