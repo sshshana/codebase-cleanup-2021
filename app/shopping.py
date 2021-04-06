@@ -24,7 +24,6 @@ def lookup_product(product_id, all_products):
     else:
         return None
 
-
 if __name__ == "__main__":
 
     # READ INVENTORY OF PRODUCTS
